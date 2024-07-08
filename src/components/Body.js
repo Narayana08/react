@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import RestaurantCard from './RestaurantCard'
 import Shimmer from './Shimmer'
 import { data } from './data'
+import { Link } from 'react-router-dom'
 
 export default function Body() {
 
@@ -35,10 +36,9 @@ export default function Body() {
                 <button className="filter-btn" onClick={() => topRatedRestaurants()}>Top Rated Restaruants</button>
             </div>
             <div className="restaurant-container">
-                {filteredRestaurants.length > 0 ?
-                    filteredRestaurants.map(data => {
-                        return <RestaurantCard key={data.info.id} restuarantData={data.info} />
-                    }) : (<Shimmer />)}
+                {
+                    filteredRestaurants.length > 0 ? filteredRestaurants.map(data => <Link key={data.info.id} to={"/restaurants/" + data.info.id}><RestaurantCard restuarantData={data.info} /></Link>) : (<Shimmer />)
+                }
             </div>
         </div>
     )

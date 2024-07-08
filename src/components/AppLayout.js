@@ -6,6 +6,7 @@ import Body from './Body'
 import About from './About'
 import Contact from './Contact'
 import Error from './Error'
+import RestaurantMenu from './RestaurantMenu'
 
 export default function AppLayout() {
     return (
@@ -20,24 +21,25 @@ const appRouter = createBrowserRouter([
     {
         path: "/",
         element: <AppLayout />,
-        errorElement: <Error />,
         children: [
             {
                 path: "/",
                 element: <Body />,
-                errorElement: <Error />
             },
             {
                 path: "/about",
                 element: <About />,
-                errorElement: <Error />
             },
             {
                 path: "/contact",
                 element: <Contact />,
-                errorElement: <Error />
+            },
+            {
+                path: "/restaurants/:resId",
+                element: <RestaurantMenu/>
             }
-        ]
+        ],
+        errorElement: <Error />
     },
 ])
 
