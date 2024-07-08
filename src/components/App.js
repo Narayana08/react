@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import AppLayout from './AppLayout'
 
 const heading = React.createElement("h1", { "id": "heading" }, "Hello World from React!")
 
@@ -12,16 +13,15 @@ const JSXHeading = () => {
 
 const numberVariable = 1000
 
-export function Header() {
+export default function App() {
     return (
         <div>
-            <h2>{numberVariable}</h2>
-            <JSXHeading />
-            <h1>Hello World from React 2</h1>
+           <AppLayout/>
         </div>
     )
 }
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
-root.render(<Header/>)
+root.render(<App/>)

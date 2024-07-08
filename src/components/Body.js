@@ -1,23 +1,44 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import RestaurantCard from './RestaurantCard'
+import Shimmer from './Shimmer'
+import { data } from './data'
 
-export default function Body(props) {
-    const { data } = props
-    const [restaurants, setRestaurants] = useState(data.restaurants)
+export default function Body() {
+
+    const [restaurants, setRestaurants] = useState([])
+    const [searchText, setSearchText] = useState("")
+    const [filteredRestaurants, setFilteredRestaurants] = useState([])
+
+    const fetchData = () => {
+        setRestaurants(data)
+        setFilteredRestaurants(data)
+    }
+
+    useEffect(fetchData, [])
 
     const topRatedRestaurants = () => {
-        setRestaurants(restaurants.filter(restaurant => restaurant.info.avgRating > 4))
+        setFilteredRestaurants(restaurants.filter(restaurant => restaurant.info.avgRating > 4))
+    }
+
+    const handleInputSearch = () => {
+        const filterRestaurants = restaurants.filter(restaurant => restaurant.info.name.toLowerCase().includes(searchText.toLowerCase()))
+        setFilteredRestaurants(filterRestaurants)
     }
 
     return (
         <div className="body">
-            <div className="search">Search</div>
-            <button onClick={() => topRatedRestaurants()}>Top Rated Restaruants</button>
+            <div className="filter">
+                <div className="search">
+                    <input type='text' className='search-box' value={searchText} onChange={e => { setSearchText(e.target.value) }} />
+                    <button onClick={() => handleInputSearch()}>Search</button>
+                </div>
+                <button className="filter-btn" onClick={() => topRatedRestaurants()}>Top Rated Restaruants</button>
+            </div>
             <div className="restaurant-container">
-                {restaurants.length > 0 ?
-                    restaurants.map(data => {
+                {filteredRestaurants.length > 0 ?
+                    filteredRestaurants.map(data => {
                         return <RestaurantCard key={data.info.id} restuarantData={data.info} />
-                    }) : `No restaruants are currently avaiable`}
+                    }) : (<Shimmer />)}
             </div>
         </div>
     )
