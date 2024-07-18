@@ -6,6 +6,7 @@
     "abortcontroller-polyfill": "^1.7.5",
     "ansi-styles": "^4.3.0",
     "argparse": "^2.0.1",
+    "axios": "^1.7.2",
     "base-x": "^3.0.9",
     "boolbase": "^1.0.0",
     "braces": "^3.0.3",
@@ -99,8 +100,13 @@
     "weak-lru-cache": "^1.2.2"
   },
   "devDependencies": {
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
     "parcel": "^2.12.0",
-    "process": "^0.11.10"
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.4.39",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.4"
   },
   "scripts": {
     "start": "npx parcel index.html",

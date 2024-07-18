@@ -19,3 +19,12 @@
   -  Https
   -  Tree Shaking
   -  Different builds for production and dev environments bundles
+
+
+  Bundling 
+
+  - Chunking
+  - Code Splitting
+  - Dynamic Bundling
+  - Lazy Loading
+  - On Demand Loading

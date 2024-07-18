@@ -1,7 +1,5 @@
 export default function Menu(props) {
 
-    console.log(`DATA::::${JSON.stringify(props)}`)
-
     const {name} = props.data.info
 
 
