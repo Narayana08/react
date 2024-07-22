@@ -28,3 +28,13 @@
   - Dynamic Bundling
   - Lazy Loading
   - On Demand Loading
+
+  Redux (Redux Toolkit)
+
+  - Install react-redux library and redux-toolkit
+  - npm install react-react & npm install @reduxjs/toolkit packages 
+  - Build our store and connect our app to store 
+  - Create a slice
+  - Dispatch Action (which calls an reducer function which modifies the store slice)
+  - To read data from redux store we use selector to access the store data
+  -   
