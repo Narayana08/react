@@ -1,10 +1,17 @@
 import React from 'react'
 import * as Constants from '../utils/constants'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../utils/cartSlice'
 
 const ItemLists = (props) => {
 
     const { itemCards } = props
-    
+    const dispatch = useDispatch()
+
+    const handleOnClickItem = (item) => {
+        dispatch(addItem(item))
+    }
+
     return (
         <div>
             {
@@ -23,7 +30,9 @@ const ItemLists = (props) => {
                         </div>
                         <div>
                             <div className='absolute'>
-                                <button className='font-bold text-green-500 mx-[75px] mt-[150px] bg-white border-b-5 shadow-lg  py-2 px-4 rounded-md'>ADD</button>
+                                <button className='font-bold text-green-500 mx-[75px] mt-[150px] bg-white border-b-5 shadow-lg  py-2 px-4 rounded-md'
+                                    onClick={() => handleOnClickItem(item)}
+                                >ADD</button>
                             </div>
                             <img className="mt-8 max-w-80" src={Constants.CDN_URL + item.card.info?.imageId} alt={item.card.info.name} />
                         </div>
